@@ -1,0 +1,4 @@
+nb_principal:
+    resource: "@NBPrincipalBundle/Resources/config/routing.yml"
+    prefix:   /
+
