@@ -8,6 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NBPrincipalBundle::index.html.twig');
+        return $this->render('NBPrincipalBundle::index.html.twig', array('title'=>'Site de Benjamin NEILZ'));
+    }
+    
+    public function cvAction()
+    {
+        return $this->render('NBPrincipalBundle::cv.html.twig', array('title'=>'CV'));
     }
 }
