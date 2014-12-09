@@ -5,3 +5,7 @@ nb_principal_homepage:
 nb_principale_cv:
     path: /cv
     defaults: { _controller: NBPrincipalBundle:Default:cv }
+    
+nb_admin:
+    path: /admin
+    defaults: { _controller: NBPrincipalBundle:Default:admin }

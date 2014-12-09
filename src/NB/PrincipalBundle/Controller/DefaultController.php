@@ -8,11 +8,22 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NBPrincipalBundle::index.html.twig', array('title'=>'Site de Benjamin NEILZ'));
+        /*echo exec("./test 3 5", $answer);
+        var_dump($answer);
+         * 
+         */
+        return $this->render('NBPrincipalBundle::acceuil.html.twig', array('title'=>'Site de Benjamin NEILZ'));
     }
     
     public function cvAction()
     {
         return $this->render('NBPrincipalBundle::cv.html.twig', array('title'=>'CV'));
     }
+    
+    public function adminAction()
+    {
+        return $this->render('NBPrincipalBundle::admin.html.twig', array('title'=>'CV'));
+    }
+    
+    
 }
