@@ -34,7 +34,8 @@ class SecurityController extends Controller{
         return $this->render('NBSecurityBundle::login.html.twig', array(
           // Valeur du précédent nom d'utilisateur entré par l'internaute
           'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-          'error'         => $error
+          'error'         => $error,
+           'csrf_protection' => false
         ));
       }
       
