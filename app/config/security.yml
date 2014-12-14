@@ -49,10 +49,10 @@ security:
         #    logout:
         #        path:   /admin/logout
         #        target: /
+
         
-        wsse_secured:
-            wsse:      true
-            pattern:    ^/admin
+        secured_area:
+            pattern:    ^/
             anonymous: ~
             security: true
             provider: fos_userbundle
@@ -63,19 +63,6 @@ security:
             logout:
                 path:   /admin/logout
                 target: /
-        
-        #secured_area:
-        #    pattern:    ^/
-        #    anonymous: ~
-        #    security: true
-        #    provider: fos_userbundle
-        #    form_login:
-        #        #csrf_provider: form.csrf_provider
-        #        login_path:  /admin/login
-        #        check_path:  /admin/login_check
-        #    logout:
-        #        path:   /admin/logout
-        #        target: /
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
