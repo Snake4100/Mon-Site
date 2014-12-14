@@ -25,6 +25,10 @@ class WsseProvider implements AuthenticationProviderInterface
     {
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
         
+        //$message='Mon wsseProvider';
+ 
+        //echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+        
         var_dump($token->getUsername());
         var_dump($user->getPassword());
         

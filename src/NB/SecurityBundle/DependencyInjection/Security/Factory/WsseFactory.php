@@ -13,6 +13,10 @@ class WsseFactory implements SecurityFactoryInterface
 {
     public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
     {
+        //$message='WsseFactory:create';
+ 
+        //echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+        
         $providerId = 'security.authentication.provider.wsse.'.$id;
         $container
             ->setDefinition($providerId, new DefinitionDecorator('wsse.security.authentication.provider'))
@@ -27,7 +31,7 @@ class WsseFactory implements SecurityFactoryInterface
 
     public function getPosition()
     {
-        return 'pre_auth';
+        return 'form';
     }
 
     public function getKey()

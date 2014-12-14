@@ -1,8 +1,8 @@
 login:
-    pattern: /login
+    pattern: /admin/login
     defaults: { _controller: NBSecurityBundle:Security:login}
 login_check:
-    pattern:   /login_check
+    pattern:   /admin/login_check
 logout:
-    pattern:   /logout
+    pattern:   /admin/logout
 

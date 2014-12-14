@@ -24,10 +24,48 @@ class WsseListener implements ListenerInterface
 
     public function handle(GetResponseEvent $event)
     {
+        $message="WsseListener:handle";
+        echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+ 
+        /*$request = $event->getRequest();
+
+        if ($request->headers->has('x-wsse')) {
+
+            $wsseRegex = '/UsernameToken Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
+
+            if (preg_match($wsseRegex, $request->headers->get('x-wsse'), $matches)) {
+                $token = new WsseUserToken();
+                $token->setUser($matches[1]);
+
+                $token->digest   = $matches[2];
+                $token->nonce    = $matches[3];
+                $token->created  = $matches[4];
+
+                try {
+                    $returnValue = $this->authenticationManager->authenticate($token);
+
+                    if ($returnValue instanceof TokenInterface) {
+                        return $this->securityContext->setToken($returnValue);
+                    } else if ($returnValue instanceof Response) {
+                        return $event->setResponse($returnValue);
+                    }
+                } catch (AuthenticationException $e) {
+                    // you might log something here
+                }
+            }
+        }
+        $message=$message . " le if ne passe pas";
+        echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+        $response = new Response();
+        $response->setStatusCode(403);
+        $event->setResponse($response);*/
+        
         $request = $event->getRequest();
 
         $wsseRegex = '/UsernameToken Username="([^"]+)", PasswordDigest="([^"]+)", Nonce="([^"]+)", Created="([^"]+)"/';
         if (!$request->headers->has('x-wsse') || 1 !== preg_match($wsseRegex, $request->headers->get('x-wsse'), $matches)) {
+            $message=$message . " return";
+            echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
             return;
         }
 
@@ -41,16 +79,18 @@ class WsseListener implements ListenerInterface
         
         
         $tenant = $this->tenantProvider->loadUserByUsername($token->getUsername());
-
-        
         
         try {
-
+            $message=$message . " Ca passe ma gueule";
+            echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
             $authToken = $this->authenticationManager->authenticate($token);
 
             $this->securityContext->setToken($authToken);
             
         } catch (AuthenticationException $failed) {
+            
+            $message=$message . " exception";
+            echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
             // ... you might log something here
 
             // To deny the authentication clear the token. This will redirect to the login page.

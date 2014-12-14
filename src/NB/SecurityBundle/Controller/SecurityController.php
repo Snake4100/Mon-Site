@@ -15,6 +15,7 @@ class SecurityController extends Controller{
     
     public function loginAction(Request $request)
     {
+        ob_start();
         
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
