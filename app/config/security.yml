@@ -4,8 +4,8 @@ security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
-        #ySmfony\Component\Security\Core\User\User: plaintext
-        NB\SecurityBundle\Entity\User : plaintext
+        Smfony\Component\Security\Core\User\User: plaintext
+        #NB\SecurityBundle\Entity\User : plaintext
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -32,7 +32,9 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-            
+        #wsse_secured:
+        #    pattern:   /admin/.*
+        #    wsse:      true
         # the login page has to be accessible for everybody
         demo_login:
             pattern:  ^/demo/secured/login$
@@ -41,8 +43,9 @@ security:
         secured_area:
             pattern:    ^/
             anonymous: ~
+            security: true
+            provider: fos_userbundle
             form_login:
-                provider: fos_userbundle
                 #csrf_provider: form.csrf_provider
                 login_path:  /login
                 check_path:  /login_check
@@ -61,4 +64,5 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_MOI }
+        - { path: ^/login_check, role: ROLE_MOI }
+        - { path: ^/admin/*, roles: ROLE_MOI }
