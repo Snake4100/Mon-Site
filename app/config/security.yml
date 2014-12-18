@@ -16,8 +16,6 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
-        administrators:
-            entity: { class: NBSecurityBundle:User, property: username }
         
         #in_memory:
         #    memory:
@@ -28,36 +26,12 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        #dev:
-        #    pattern:  ^/(_(profiler|wdt)|css|images|js)/
-        #    security: false
-        
-        # the login page has to be accessible for everybody
-        #demo_login:
-        #    pattern:  ^/demo/secured/login$
-        #    security: false
-        #wsse_secured:
-        #    pattern:   /admin/
-        #    wsse:      true
-        #    provider: fos_userbundle
-        #    security: true
-        #    logout: true
-        #    form_login:
-        #        login_path:  /admin/login
-        #        check_path:  /admin/login_check
-        #    logout:
-        #        path:   /admin/logout
-        #        target: /
-
-        
         secured_area:
             pattern:    ^/
             anonymous: ~
             security: true
             provider: fos_userbundle
             form_login:
-                #csrf_provider: form.csrf_provider
                 login_path:  /admin/login
                 check_path:  /admin/login_check
             logout:
